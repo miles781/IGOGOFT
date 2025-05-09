@@ -105,7 +105,7 @@ const About = () => {
               </p>
             </div>
             <a
-              href='https://wa.me/+2348167085103?text=You%E2%80%99ve%20selected%20the%201-on-1%20Mentorship%20Program%20%F0%9F%A4%9D!%20%20To%20begin,%20please%20make%20payment%20using%20the%20details%20below%20%F0%9F%93%8A;%20%20Account%20Number:%208167085103%20%20Bank%20Name:%20Opay%20Account%20%F0%9F%93%88%20Account%20Name:%20Igogo%20Victor%20Anyuikpe%20%20Amount%20in%20Nigeria:%2032,000%20%F0%9F%92%B8%20After%20confirmation,%20your%20personalized%20mentorship%20schedule%20will%20be%20arranged%20%F0%9F%93%85.'
+              href='https://wa.me/+2348167085103?text=You%E2%80%99ve%20selected%20the%201-on-1%20Mentorship%20Program%20%F0%9F%A4%9D!%20%20To%20begin,%20please%20make%20payment%20using%20the%20details%20below%20%F0%9F%93%8A;%20%20Account%20Number:%208167085103%20%20Bank%20Name:%20Opay%20Account%20%F0%9F%93%88%20Account%20Name:%20Igogo%20Victor%20Anyuikpe%20%20Amount%20in%20Nigeria:%2079,200%20%F0%9F%92%B8%20After%20confirmation,%20your%20personalized%20mentorship%20schedule%20will%20be%20arranged%20%F0%9F%93%85.'
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -130,7 +130,7 @@ const About = () => {
               </p>
             </div>
             <a
-              href='https://wa.me/+2348167085103?text=Youre%20one%20step%20away%20from%20joining%20the%20VIP%20%20Signal%20Group%20%F0%9F%91%91!%20%20To%20gain%20access,%20please%20complete%20your%20payment%20using%20the%20following%20details%20%F0%9F%93%8A;%20Account%20Number:%208167085103%20Bank%20Name:%20Opay%20Account%20%F0%9F%93%88%20Account%20Name:%20Igogo%20Victor%20Anyuikpe%20Amount%20in%20Naira:%2079,200%20%F0%9F%92%B8%20%20Access%20will%20be%20granted%20immediately%20upon%20payment%20confirmation%20%F0%9F%94%93'
+              href='https://wa.me/+2348167085103?text=Youre%20one%20step%20away%20from%20joining%20the%20VIP%20%20Signal%20Group%20%F0%9F%91%91!%20%20To%20gain%20access,%20please%20complete%20your%20payment%20using%20the%20following%20details%20%F0%9F%93%8A;%20Account%20Number:%208167085103%20Bank%20Name:%20Opay%20Account%20%F0%9F%93%88%20Account%20Name:%20Igogo%20Victor%20Anyuikpe%20Amount%20in%20Naira:%2032,000%20%F0%9F%92%B8%20%20Access%20will%20be%20granted%20immediately%20upon%20payment%20confirmation%20%F0%9F%94%93'
               target="_blank"
               rel="noopener noreferrer"
             >
