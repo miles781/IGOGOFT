@@ -110,7 +110,7 @@ const About = () => {
               rel="noopener noreferrer"
             >
               <button className="mt-6 w-full py-2 text-sm font-semibold rounded border border-gray-700 bg-transparent text-gray-700 hover:bg-gray-100 transition-all">
-                Buy Now – $20
+                Buy Now – $49.5
               </button>
             </a>
            
@@ -135,7 +135,7 @@ const About = () => {
               rel="noopener noreferrer"
             >
               <button className="mt-6 w-full py-2 text-sm font-semibold rounded border border-gray-700 bg-transparent text-gray-700 hover:bg-gray-100 transition-all">
-                Buy Now – $49.5
+                Buy Now – $20
               </button>
             </a>
           </div>
