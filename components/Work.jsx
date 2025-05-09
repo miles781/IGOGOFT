@@ -127,7 +127,7 @@ const Work = ({ isDarkMode }) => {
           <div className="bg-gradient-to-tr from-white via-white/80 to-white/60 border border-gray-400 w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 z-10">
             <div className="border border-gray-400 p-2 rounded-md">
               <h2 className="font-semibold border-b border-gray-400 pb-1">Crypto Swing Ride</h2>
-              <p className="text-sm text-gray-700 pt-1">Captured a 30% move on ETH over 5 days. Swing trade mastery.</p>
+              <p className="text-sm text-gray-700 pt-1"> Made over 400% ROI on ETH in minutes. Short trade mastery.</p>
             </div>
             <div className="border rounded-full border-black w-6 aspect-square flex items-center justify-center group-hover:bg-lime-300 transition text-sm">
               <Image
