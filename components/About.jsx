@@ -81,7 +81,7 @@ const About = () => {
               </p>
             </div>
             <a
-              href='https://wa.me/+2348167085103?text=Thank%20you%20for%20your%20interest%20in%20the%20Premium%20Trading%20Course%20%F0%9F%93%9A!%20%20To%20proceed%20with%20enrollment,%20kindly%20make%20payment%20to%20the%20account%20below%20%F0%9F%93%8A;%20%20Account%20Number:%208167085103%20%20Bank%20Name:%20Opay%20Account%20%F0%9F%93%88%20Account%20Name:%20Igogo%20Victor%20Anyuikpe%20Amount:%20Naira%2039,200%20%F0%9F%92%B8%20%20Once%20payment%20is%20confirmed,%20you%20will%20receive%20full%20access%20to%20the%20course%20materials%20%F0%9F%93%81.'
+              href='https://selar.com/y1q5gf'
               target="_blank"
               rel="noopener noreferrer"
             >
