@@ -2,7 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Institutional Infrastructure Styling */
+* {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
 
-*{
-  font-family:Outfit;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A192F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00B4D8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0096C7;
+}
+
+/* Glassmorphism utilities */
+.glass-bg {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography utilities */
+.font-data {
+  font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+}
+
+.font-display {
+  font-family: var(--font-jakarta), 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Animation utilities */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-trust-cyan focus:ring-offset-2 focus:ring-offset-void-blue;
 }

@@ -1,29 +1,90 @@
-import { assets } from '@/assets/assets'
-import Image from 'next/image'
 import React from 'react'
+import { motion } from 'motion/react'
+import { Mail, Send, MessageCircle } from 'lucide-react';
 
-const Footer = ({isDarkMode}) => {
+const Footer = () => {
+  const socialLinks = [
+    {
+      name: 'Email',
+      url: 'mailto:tradingvictor0@gmail.com',
+      icon: Mail
+    },
+    {
+      name: 'Telegram',
+      url: '#',
+      icon: Send
+    },
+    {
+      name: 'Discord',
+      url: '#',
+      icon: MessageCircle
+    }
+  ];
+
   return (
-    <div className='mt-20' >
-      <div className='text-center'> 
-        <Image src={isDarkMode ? assets.logo_dark : assets.logo} alt='' className='w-36 mx-auto mb-2'/>
+    <footer className="bg-void-blue border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-12">
+        {/* Main Footer Content */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
+          {/* Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center lg:text-left"
+          >
+            <div className="text-2xl font-bold font-jakarta text-primary-text mb-2">
+              Victor Igogo
+            </div>
+            <p className="text-secondary-text font-inter text-sm">
+              Financial Market Analyst & Web3 Growth Strategist
+            </p>
+          </motion.div>
 
-        <div className='w-max flex items-center gap-2 mx-auto'>  
-        <Image src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon} alt='' className='w-6 '/>
-         tradingvictor0@gmail.com 
-        </div> 
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-4"
+          >
+            {socialLinks.map((social, index) => {
+              const IconComponent = social.icon;
+              return (
+                <motion.a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-12 h-12 rounded-lg bg-white/5 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-trust-cyan/20 hover:border-trust-cyan/50 transition-all duration-300 group"
+                  aria-label={social.name}
+                >
+                  <IconComponent
+                    size={20}
+                    strokeWidth={1.5}
+                    className="text-secondary-text group-hover:text-trust-cyan transition-colors duration-300"
+                  />
+                </motion.a>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="pt-8 border-t border-white/10 text-center"
+        >
+          <p className="text-secondary-text font-inter text-sm">
+            © Victor Igogo. Financial Market Analyst & Web3 Growth Strategist.
+          </p>
+        </motion.div>
       </div>
-       <div className='text-center sm:flex items-center justify-between border-t border-gary-400
-       mx-[10%] mt-12 py-6 ' >
-        <p> © 2025 igogo Victor. All rights reserved.</p>
-        <ul className='flex items-center gap-10 justify-center mt-4 sm:mt-0'> 
-            <li> <a target='_blank'  href='https://x.com/IGOGOFT?t=dr0g-Zp04Ejy57s8ZpvsvQ&s=09'> X </a>  </li>
-            <li> <a target='_blank'  href='https://discord.com/users/igogoft1'>Discord </a>  </li>
-            <li> <a target='_blank'  href='https://www.facebook.com/share/15NhWgnmum/'>  Facebook</a> </li>
-        </ul>
-       </div> 
-    </div>
+    </footer>
   )
 }
 
-export default Footer
+export default Footer 

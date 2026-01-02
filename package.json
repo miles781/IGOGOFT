@@ -10,10 +10,19 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@wagmi/core": "^2.13.8",
+    "@web3modal/wagmi": "^5.1.11",
+    "ethers": "^6.13.4",
+    "lucide-react": "^0.562.0",
     "motion": "^12.5.0",
     "next": "15.1.6",
+    "nodemailer": "^7.0.12",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "viem": "^2.21.19",
+    "wagmi": "^2.12.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

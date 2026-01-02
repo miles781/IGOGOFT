@@ -1,79 +1,202 @@
-"use client"; 
+"use client";
 import Image from 'next/image'
 import { assets } from '@/assets/assets'
 import React, { useEffect, useRef, useState } from 'react'
 
-const Navbar = ( {isDarkMode, setIsDarkMode}) => { 
-       
-        const [isScroll, setIsScroll] = useState(false) 
-        const sideMenuRef = useRef();
+const Navbar = () => {
+  const [isScroll, setIsScroll] = useState(false)
+  const [activeAudience, setActiveAudience] = useState('web2')
+  const sideMenuRef = useRef(null);
 
-        const openMenu =()=>{
-            sideMenuRef.current.style.transform = 'translateX(-16rem)'
-        }
-        const closeMenu =()=>{
-            sideMenuRef.current.style.transform = 'translateX(16rem)'
-        }
-        useEffect (()=>{
-             window.addEventListener('scroll', ()=>{
-                  if(scrollY > 50){
-                     setIsScroll(true)
-                  }else {
-                    setIsScroll(false)
-                  }
-             })
-        },[])
+  const audienceNavs = {
+    web2: ['Trading Mentorship', 'Signals', 'Courses', 'Community'],
+    web3: ['DeFi Research', 'Tokenomics', 'Consulting', 'Analytics']
+  };
+
+  const openMenu = () => {
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = 'translateX(0)'
+    }
+  }
+
+  const closeMenu = () => {
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = 'translateX(100%)'
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScroll(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <>  
-    <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]
-    dark:hidden'> 
-      <Image src={assets.header_bg_color} alt='' className='w-full'/>
-    </div>
-    <nav className={`w-full fixed px-4 py-4 lg:px-8 xl:px-[8%] 
-      flex items-center justify-between z-50 dark:bg-darkTheme dark:shadow-white/20
-       ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""} `}>
-      <a href="#top ">
-        <Image alt='logo' src={isDarkMode ? assets.logo_dark: assets.logo} className='w-28 h-30 cursor-pointer mr-14'/>
-        </a> 
-        <ul className= {`hidden md:flex items-center gap-6 lg:gap-8 rounded-full shadow-sm px-12 py-3 ${isScroll ? "":"bg-white bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"} `}>
-            <li> <a className='font-ovo' href="#top"> Home </a> </li>
-            <li> <a className='font-ovo' href="#about"> About me  </a> </li>  
-            <li> <a className='font-ovo' href="#services"> Services </a> </li>
-            <li> <a className='font-ovo' href="#work"> My work </a> </li>
-            <li> <a className='font-ovo' href="#contact"> Contact me </a> </li>
-        </ul>   
-        <div className='flex items-center gap-4'> 
-          <button onClick={()=> setIsDarkMode(prev => !prev)}>  
-            <Image src={ isDarkMode ? assets.sun_icon :  assets.moon_icon} alt='' className='w-6'/>
+    <header className="w-full fixed top-0 left-0 z-50">
+      <nav className={`
+        w-full px-6 lg:px-12 xl:px-[8%] py-4 
+        flex items-center justify-between
+        transition-all duration-300
+        ${
+          isScroll 
+            ? "bg-void-blue/95 backdrop-blur-md border-b border-white/10 shadow-lg" 
+            : "bg-transparent"
+        }
+      `}>
+        {/* Logo */}
+        <a 
+          href="#home" 
+          className="flex-shrink-0 transition-transform hover:scale-105 duration-300"
+          aria-label="Home"
+        >
+          <div className="text-2xl font-bold font-jakarta text-primary-text">
+            IgogoFT
+          </div>
+        </a>
+
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {/* Audience Segmentation */}
+          <div className="bg-tech-slate/50 backdrop-blur-md border border-white/10 rounded-full p-1">
+            <button
+              onClick={() => setActiveAudience('web2')}
+              className={`px-4 py-2 rounded-full text-sm font-medium font-inter transition-all duration-300 ${
+                activeAudience === 'web2'
+                  ? 'bg-trust-cyan text-void-blue shadow-lg'
+                  : 'text-secondary-text hover:text-primary-text hover:bg-white/10'
+              }`}
+            >
+              Web2 Trading
+            </button>
+            <button
+              onClick={() => setActiveAudience('web3')}
+              className={`px-4 py-2 rounded-full text-sm font-medium font-inter transition-all duration-300 ${
+                activeAudience === 'web3'
+                  ? 'bg-trust-cyan text-void-blue shadow-lg'
+                  : 'text-secondary-text hover:text-primary-text hover:bg-white/10'
+              }`}
+            >
+              Web3 Analytics
+            </button>
+          </div>
+
+          {/* Main Navigation */}
+          <div className="bg-tech-slate/30 backdrop-blur-md border border-white/10 rounded-full px-8 py-3">
+            <ul className="flex items-center gap-8 font-inter">
+              {['Home', 'About', 'Services', 'Work', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="text-secondary-text hover:text-primary-text transition-all duration-300 relative group"
+                  >
+                    {item}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-trust-cyan transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Right Section */}
+        <div className="flex items-center gap-4">
+          {/* Contact CTA */}
+          <a 
+            href="#contact" 
+            className="hidden lg:flex items-center gap-3 px-6 py-3 bg-trust-cyan hover:bg-trust-cyan/90 text-void-blue font-semibold font-inter rounded-lg transition-all duration-300 hover:scale-105"
+          >
+            Contact
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+            onClick={openMenu}
+            aria-label="Open menu"
+          >
+            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+              <span className="block w-full h-0.5 bg-primary-text"></span>
+              <span className="block w-full h-0.5 bg-primary-text"></span>
+              <span className="block w-full h-0.5 bg-primary-text"></span>
+            </div>
           </button>
-            <a href="#contact" className='hidden lg:flex items-center gap-3
-             px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50' > Contact
-              <Image  alt='arrow icon'  src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon } className='w-3'/> </a>
-        <button className='block md:hidden ml-3' onClick={openMenu}> 
-           <Image src={isDarkMode ? assets.menu_white: assets.menu_black} alt='' className='w-6'/>
-        </button>
-        
         </div>
 
-        {/* -- ----- mobile menu ------ -- */ }
-        <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64
-        top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500
-        dark:bg-darkhover dark:text-white'> 
-        
-        <div className='absolute right-6 top-6' onClick={closeMenu}>
-          <Image src={isDarkMode ? assets.close_white :  assets.close_black} alt='' className='w-5 cursor-pointer'/>        
-        </div>
-        
-            <li> <a className='font-ovo' onClick={closeMenu} href="#top"> Home </a> </li>
-            <li> <a className='font-ovo' onClick={closeMenu} href="#about"> About me  </a> </li>  
-            <li> <a className='font-ovo' onClick={closeMenu} href="#services"> Services </a> </li>
-            <li> <a className='font-ovo' onClick={closeMenu} href="#work"> My work </a> </li>
-            <li> <a className='font-ovo' onClick={closeMenu} href="#contact"> Contact me </a> </li>
+        {/* Mobile Menu */}
+        <div 
+          ref={sideMenuRef}
+          className="fixed inset-y-0 right-0 w-80 bg-void-blue/95 backdrop-blur-xl border-l border-white/10 transform translate-x-full transition-transform duration-500 ease-in-out z-50 lg:hidden"
+        >
+          <div className="flex flex-col h-full p-8">
+            {/* Close Button */}
+            <button 
+              onClick={closeMenu}
+              className="self-end p-2 rounded-lg hover:bg-white/10 transition-colors mb-8"
+              aria-label="Close menu"
+            >
+              <div className="w-6 h-6 relative">
+                <span className="absolute top-1/2 left-0 w-full h-0.5 bg-primary-text transform rotate-45"></span>
+                <span className="absolute top-1/2 left-0 w-full h-0.5 bg-primary-text transform -rotate-45"></span>
+              </div>
+            </button>
 
-        </ul>
-     </nav>
-    </>
+            {/* Audience Toggle Mobile */}
+            <div className="bg-tech-slate/50 rounded-full p-1 mb-8">
+              <button
+                onClick={() => setActiveAudience('web2')}
+                className={`w-full py-3 rounded-full text-sm font-medium font-inter transition-all duration-300 ${
+                  activeAudience === 'web2'
+                    ? 'bg-trust-cyan text-void-blue'
+                    : 'text-secondary-text'
+                }`}
+              >
+                Web2 Trading
+              </button>
+              <button
+                onClick={() => setActiveAudience('web3')}
+                className={`w-full py-3 rounded-full text-sm font-medium font-inter transition-all duration-300 ${
+                  activeAudience === 'web3'
+                    ? 'bg-trust-cyan text-void-blue'
+                    : 'text-secondary-text'
+                }`}
+              >
+                Web3 Analytics
+              </button>
+            </div>
+
+            {/* Menu Items */}
+            <nav className="flex-1">
+              <ul className="space-y-6">
+                {['Home', 'About', 'Services', 'Work', 'Contact'].map((item, index) => (
+                  <li key={item}>
+                    <a 
+                      href={`#${item.toLowerCase()}`}
+                      onClick={closeMenu}
+                      className="text-secondary-text hover:text-primary-text text-xl font-inter block py-3 transition-all duration-300 hover:translate-x-2"
+                      style={{ transitionDelay: `${index * 100}ms` }}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Mobile Contact CTA */}
+            <a 
+              href="#contact" 
+              onClick={closeMenu}
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-trust-cyan text-void-blue font-semibold font-inter rounded-lg transition-all duration-300 mt-8"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
   )
 }
 

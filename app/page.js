@@ -6,41 +6,25 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
-import { useEffect, useState } from "react";
-
-
+import Tools from "@/components/Tools";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
-
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(()=>{
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) &&
-     window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    setIsDarkMode(true)
-  }else{ 
-    setIsDarkMode(false)
-  }
-    }, [])
-
-  useEffect(()=> {
-    if(isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';  
-    }else {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = '';
-    }
-  },[isDarkMode])
   return (
-    <> 
-     <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
-     <Header isDarkMode={isDarkMode} /> 
-     <About  isDarkMode={isDarkMode} />  
-     <Services isDarkMode={isDarkMode} /> 
-     <Work isDarkMode={isDarkMode} />
-     <Contact isDarkMode={isDarkMode} />
-     <Footer isDarkMode={isDarkMode} /> 
-    </>
+    <div className="bg-void-blue text-primary-text">
+      <Navbar />
+      <Header /> 
+      <About />  
+      <Services /> 
+      <Tools />
+      <Work />
+      <section id="newsletter" className="py-20 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <NewsletterSignup />
+        </div>
+      </section>
+      <Contact />
+      <Footer /> 
+    </div>
   );
 }
