@@ -128,7 +128,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div 
           ref={sideMenuRef}
-          className="fixed inset-y-0 right-0 w-80 bg-void-blue/95 backdrop-blur-xl border-l border-white/10 transform translate-x-full transition-transform duration-500 ease-in-out z-50 lg:hidden"
+          className="fixed inset-y-0 right-0 w-80 bg-void-blue border-l border-white/10 transform translate-x-full transition-transform duration-500 ease-in-out z-50 lg:hidden"
         >
           <div className="flex flex-col h-full p-8">
             {/* Close Button */}
